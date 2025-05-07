@@ -1,0 +1,24 @@
+token: {GITHUB_PAT}
+
+global_variables:
+  REGISTRY_SERVER: {REGISTRY_SERVER}
+  ECS_CLUSTER: example-ecs-cluster
+  AWS_ACCOUNT_ID: {REGISTRY_SERVER}
+  AWS_REGION: ap-southeast-1
+
+global_secrets:
+  AWS_ACCESS_KEY_ID: {AWS_ACCESS_KEY_ID}
+  AWS_SECRET_ACCESS_KEY: {AWS_SECRET_ACCESS_KEY}
+  ECS_EXEC_ROLE: {ECS_EXEC_ROLE}
+
+repositories:
+  - owner: kdbeer
+    repo: aws-ecr-deployment
+    overrides:
+      variables:
+        ECR_REPOSITORY: aws-ecr-deployment
+        ECS_SERVICE: aws-ecr-deployment-service
+        RELEASE_NAME: aws-ecr-deployment
+        TASK_NAME: aws-ecr-deployment-task
+        CONTAINER_NAME: app
+      secrets: {}
